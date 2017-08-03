@@ -55,9 +55,9 @@
 
 该方案的瓶颈在于，当 json 字段存储的内容变大后，操作复杂度为 O(n)，测试时当总共1W条记录插入和删除一条记录需要 30ms～40ms（根据每条记录大小有所浮动）
 
-JSON_ARRAY_APPEND
+JSON_ARRAY_APPEND：全量替换性能低下 *MySQL暂无优化计划*
 
-JSON_REMOVE 此方法将在 MySQL 8 中得到优化
+JSON_REMOVE：全量替换性能低下 此方法将在 MySQL 8 中得到优化
 
 > Added support in MySQL 8.0.2 for partial, in-place updates of JSON column values, which is more efficient than completely removing an existing JSON value and writing a new one in its place, as was done previously when updating any JSON column. For this optimization to be applied, the update must be applied using JSON_SET(), JSON_REPLACE(), or JSON_REMOVE(). New elements cannot be added to the JSON document being updated; values within the document cannot take more space than previous to the update. See Section 11.6, “The JSON Data Type”, for a detailed discussion of the requirements.
 

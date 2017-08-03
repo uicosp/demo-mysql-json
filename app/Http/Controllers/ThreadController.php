@@ -10,11 +10,18 @@ use Illuminate\Http\Request;
 
 class ThreadController extends Controller
 {
-    public function getThreadList()
+    /**
+     * 获取帖子列表，包括点赞信息
+     * @param Request $request
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function getThreadList(Request $request)
     {
+        $page = $request->get('page', 1);
         $threadRepository = app(ThreadRepository::class);
-
+        return $threadRepository->getThreadListWithLike($page);
     }
+
     public function like(Thread $thread, Request $request)
     {
         sql();

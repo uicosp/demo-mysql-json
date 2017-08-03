@@ -27,7 +27,6 @@ class ThreadRepository
 
     public function getThreadListWithLike($page, $size=10)
     {
-        sql();
         $threads= $this->getThreadList($page);
         $tids = array_pluck($threads->getCollection()->toArray(),'id');
         $likeList = $this->getLikeUserListBatch($tids);

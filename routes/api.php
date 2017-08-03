@@ -17,7 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::any("/test","TestController@index");
-Route::get("/threads","ThreadController@getThreadList");
-Route::post("/threads/{thread}/like","ThreadController@like");
-Route::delete("/threads/{thread}/like","ThreadController@unlike");
-Route::get("/users/{uid}/likes","UserController@getLikeList");
+Route::get("/threads","ThreadController@getThreadList"); // 获取帖子列表(包含点赞信息)
+Route::post("/threads/{thread}/like","ThreadController@like"); // 点赞
+Route::delete("/threads/{thread}/like","ThreadController@unlike"); // 取消点赞
+Route::get("/users/{uid}/likes","UserController@getLikeList"); // 获取用户点赞列表
